@@ -1,15 +1,27 @@
 <h1> <%=@the_user.username%></h1>
 <dl>ID</dt>
 <dd><%=@the_user.id%></dt>
+
+
 <dt>Edit user</dt>
-<dd>form goes here</dd>
+<dd><form action="/update_user_record/<%= @the_user.id%>">
+      <label for="browser_username">Username</label>
+      
+      <input id="browser_username" type="text" name="input_username" placeholder="Enter a username..." value="<%= @the_user.username%>">
+
+      <button>Update user</button>
+    
+    </form>
+    </dd>
 </dl>
+
+
 <h2>Own photos(<%=@the_user.own_photos.count%>)</h2>
 <!--%= own_photos = Photo.where({ :owner_id => @the_user.id})%-->
 <table border ="1">
 <tr>
 <th>Image</th>
-<th>Owner</th>k
+<th>Owner</th>
 <th>Caption</th>
 <th>Posted</th>
 <th></th>
@@ -22,7 +34,7 @@
 <td><%= a_photo.caption%></td>
 <td><%= a_photo.created_at%></td>
 
-<td><a href= "/photos/<%= a_photo.id%>"> Show details%> </td>
+<td><a href= "/photos/<%= a_photo.id%>"> Show details</td>
 </tr>
 
 <%end%>
